@@ -1,0 +1,43 @@
+# === Entorno virtual ===
+.venv/
+venv/
+env/
+
+# === Variables de entorno (SECRETOS: nunca subir) ===
+.env
+.env.*
+!.env.example
+
+# === IDEs / editores ===
+.idea/
+.vscode/
+
+# === Python: cachés y bytecode ===
+__pycache__/
+*.py[cod]
+*$py.class
+
+# === Distribución / empaquetado ===
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# === Tests y cobertura ===
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# === Logs y bases de datos locales ===
+*.log
+*.sqlite3
+*.db
+
+# === Sistema operativo ===
+Thumbs.db
+.DS_Store
+
+# === Documentación interna de Claude Code ===
+CLAUDE.md
