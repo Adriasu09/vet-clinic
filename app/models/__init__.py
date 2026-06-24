@@ -1,0 +1,7 @@
+"""Import all models so SQLAlchemy registers them on Base.metadata."""
+
+from app.models.owner_model import Owner
+from app.models.treatment_model import Treatment
+from app.models.veterinarian_model import Veterinarian
+
+__all__ = ["Owner", "Treatment", "Veterinarian"]
