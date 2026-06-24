@@ -12,6 +12,8 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from app.models.owner_model import Owner
     from app.models.medical_record_model import MedicalRecord
+    from app.models.appointment_model import Appointment
+    from app.models.pet_treatment_model import PetTreatment
 
 
 class Pet(Base):
@@ -25,5 +27,8 @@ class Pet(Base):
     species: Mapped[str] = mapped_column(String(50), nullable=False)
     breed: Mapped[str] = mapped_column(String(50), nullable=False)
     birth_date: Mapped[date] = mapped_column(Date, nullable=False)
+
     owner: Mapped["Owner"] = relationship(back_populates="pets")
     medical_records: Mapped[list["MedicalRecord"]] = relationship(back_populates="pet")
+    appointments: Mapped[list["Appointment"]] = relationship(back_populates="pet")
+    pet_treatments: Mapped[list["PetTreatment"]] = relationship(back_populates="pet")

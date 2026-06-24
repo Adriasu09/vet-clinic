@@ -24,4 +24,5 @@ class MedicalRecord(Base):
     record_date: Mapped[date] = mapped_column(Date, nullable=False)
     weight: Mapped[Decimal] = mapped_column(Numeric(5, 2), nullable=False)
     notes: Mapped[str | None] = mapped_column(Text)
+
     pet: Mapped["Pet"] = relationship(back_populates="medical_records")
