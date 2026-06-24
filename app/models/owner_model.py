@@ -1,9 +1,14 @@
 """Owner model: a pet owner / clinic client."""
 
 from sqlalchemy import Identity, String
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database import Base
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from app.models.pet_model import Pet
 
 
 class Owner(Base):
@@ -16,3 +21,5 @@ class Owner(Base):
     last_name: Mapped[str] = mapped_column(String(100), nullable=False)
     email: Mapped[str] = mapped_column(String(150), unique=True, nullable=False)
     phone: Mapped[str] = mapped_column(String(20), nullable=False)
+
+    pets: Mapped[list["Pet"]] = relationship(back_populates="owner")
