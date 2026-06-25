@@ -16,6 +16,11 @@ class OwnerCreate(OwnerBase):
     pass
 
 
+class OwnerUpdate(OwnerBase):
+    """Data to update an existing owner."""
+    pass
+
+
 class OwnerRead(OwnerBase):
     """Data returned to the client (includes the generated id)."""
     id: int
