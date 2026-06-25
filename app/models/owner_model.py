@@ -4,6 +4,7 @@ from sqlalchemy import Identity, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database import Base
+from app.models.mixins import TimestampMixin
 
 from typing import TYPE_CHECKING
 
@@ -11,7 +12,7 @@ if TYPE_CHECKING:
     from app.models.pet_model import Pet
 
 
-class Owner(Base):
+class Owner(Base, TimestampMixin):
     """A person who owns one or more pets."""
 
     __tablename__ = "owners"
