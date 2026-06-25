@@ -4,6 +4,7 @@ from sqlalchemy import Identity, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database import Base
+from app.models.mixins import TimestampMixin
 
 from typing import TYPE_CHECKING
 
@@ -11,7 +12,7 @@ if TYPE_CHECKING:
     from app.models.appointment_model import Appointment
 
 
-class Veterinarian(Base):
+class Veterinarian(Base, TimestampMixin):
     """A veterinarian cares for one or more pets."""
 
     __tablename__ = "veterinarians"
