@@ -8,13 +8,14 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database import Base
 from app.enums import AppointmentStatus
+from app.models.mixins import TimestampMixin
 
 if TYPE_CHECKING:
     from app.models.pet_model import Pet
     from app.models.veterinarian_model import Veterinarian
 
 
-class Appointment(Base):
+class Appointment(Base, TimestampMixin):
     """A scheduled appointment between a pet and a veterinarian."""
 
     __tablename__ = "appointments"

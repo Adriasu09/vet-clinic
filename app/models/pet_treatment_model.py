@@ -7,13 +7,14 @@ from sqlalchemy import Date, ForeignKey, Identity, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database import Base
+from app.models.mixins import TimestampMixin
 
 if TYPE_CHECKING:
     from app.models.pet_model import Pet
     from app.models.treatment_model import Treatment
 
 
-class PetTreatment(Base):
+class PetTreatment(Base, TimestampMixin):
     """A treatment applied to a pet, with its own dates and dosage."""
 
     __tablename__ = "pet_treatments"
