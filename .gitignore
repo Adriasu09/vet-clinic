@@ -41,3 +41,4 @@ Thumbs.db
 
 # === Documentación interna de Claude Code ===
 CLAUDE.md
+.claude/

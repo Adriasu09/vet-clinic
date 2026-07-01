@@ -7,6 +7,7 @@ from sqlalchemy.exc import IntegrityError
 import app.models  # noqa: F401  -> register all models so SQLAlchemy mappers resolve
 from app.core.config import settings
 from app.exceptions import ConflictError, NotFoundError
+from app.routers.pet_router import router as pet_router
 from app.routers.owner_router import router as owner_router
 
 app = FastAPI(
@@ -35,3 +36,4 @@ async def integrity_handler(request: Request, exc: IntegrityError):
 
 
 app.include_router(owner_router)
+app.include_router(pet_router)
