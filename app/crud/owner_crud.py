@@ -47,7 +47,7 @@ def create_owner(db: Session, owner_data: OwnerCreate) -> Owner:
 
 def update_owner(db: Session, owner_id: int, owner_data: OwnerUpdate) -> Owner:
     """Update an existing owner, or raise NotFoundError."""
-    owner = get_owner(db, owner_id)  # raises NotFoundError if missing
+    owner = get_owner(db, owner_id)
 
     existing_email = get_owner_by_email(db, owner_data.email)
     if existing_email and existing_email.id != owner_id:
@@ -66,7 +66,9 @@ def update_owner(db: Session, owner_id: int, owner_data: OwnerUpdate) -> Owner:
 
 
 def delete_owner(db: Session, owner_id: int) -> None:
-    """Delete an owner by id, or raise NotFoundError."""
-    owner = get_owner(db, owner_id)  # raises NotFoundError if missing
+    """Delete an owner, or raise NotFoundError / ConflictError."""
+    owner = get_owner(db, owner_id)
+    if owner.pets:
+        raise ConflictError("Cannot delete an owner that still has pets")
     db.delete(owner)
     db.commit()
